@@ -1,24 +1,28 @@
-var getNome = function(nome, sobrenome){
-    console.log(this.nome = nome)
-    console.log(this.sobrenome = sobrenome)
-    console.log(this)
+var pessoa = {};
+pessoa.nome = 'Fabricio'
+pessoa.idade = '18'
+pessoa.sexo = 'Masculino'
+pessoa.casado = false
+
+//delete pessoa.idade
+
+if(pessoa.hasOwnProperty('casado')){
+    delete pessoa.casado
 }
 
-var pessoa = {
-    nome:'Fabricio',
-    idade:'18',
-    getNome: getNome
-};
-
-var carros = {
-    nome: 'Siena',
-    sobrenome: '1000',
-    marca: 'Fiat',
-    getNome: getNome
+/*for(propriedade in pessoa){
+    console.log(pessoa[propriedade])
+    console.log(propriedade)
 }
 
-pessoa.getNome();
-carros.getNome();
+console.log(pessoa.hasOwnProperty('casado'))
+console.log(pessoa)*/
 
-getNome.call(carros, 'Fusca', '1500')
-getNome.apply(carros, ['Palio', '1.0'])
+var i, size;
+var propriedades = Object.keys(pessoa)
+
+for(i=0, size=propriedades.length; i < size; i++){
+    console.log(propriedades[i] + ': ' + pessoa[propriedades[i]])
+}
+
+console.log(pessoa.propertyIsEnumerable('idade'))
