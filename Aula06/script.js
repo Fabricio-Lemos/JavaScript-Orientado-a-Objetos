@@ -1,28 +1,18 @@
-var pessoa = {};
-pessoa.nome = 'Fabricio'
-pessoa.idade = '18'
-pessoa.sexo = 'Masculino'
-pessoa.casado = false
-
-//delete pessoa.idade
-
-if(pessoa.hasOwnProperty('casado')){
-    delete pessoa.casado
+var pessoa = {
+    nome:'Fabricio',
+    _idade: '18',
+    sexo: 'Masculino',
+    casado: false,
+    state: 'pristine',
+    get idade() {
+        this.state = 'dirty'
+        return this._idade
+    },
+    set idade(valor){
+        this._idade = valor
+    }
 }
-
-/*for(propriedade in pessoa){
-    console.log(pessoa[propriedade])
-    console.log(propriedade)
-}
-
-console.log(pessoa.hasOwnProperty('casado'))
-console.log(pessoa)*/
-
-var i, size;
-var propriedades = Object.keys(pessoa)
-
-for(i=0, size=propriedades.length; i < size; i++){
-    console.log(propriedades[i] + ': ' + pessoa[propriedades[i]])
-}
-
-console.log(pessoa.propertyIsEnumerable('idade'))
+console.log(pessoa._idade)
+console.log(pessoa.state)
+console.log(pessoa.idade)
+console.log(pessoa.state)
