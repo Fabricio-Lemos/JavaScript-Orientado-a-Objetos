@@ -12,7 +12,25 @@ var pessoa = {
         this._idade = valor
     }
 }
-console.log(pessoa._idade)
-console.log(pessoa.state)
-console.log(pessoa.idade)
-console.log(pessoa.state)
+
+pessoa.idade = '19'
+
+Object.defineProperty(pessoa, 'idade', {
+    enumerable: false,
+    value: '20',
+    writable: false
+})
+
+Object.defineProperty(pessoa, 'nome', {
+    configurable: false,
+    value: 'Roberto',
+    writable: false
+})
+pessoa.idade = '19'
+
+console.log(pessoa)
+console.log(pessoa.propertyIsEnumerable('nome'))
+
+for (propriedade in pessoa){
+    console.log(propriedade + ': ' + pessoa[propriedade])
+}
